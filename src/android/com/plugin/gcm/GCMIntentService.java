@@ -81,6 +81,7 @@ public class GCMIntentService extends GCMBaseIntentService {
 
 	public void createNotification(Context context, Bundle extras)
 	{
+		String message = extras.getString("message");
 		NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 		String appName = getAppName(this);
 
@@ -104,11 +105,12 @@ public class GCMIntentService extends GCMBaseIntentService {
 				.setSmallIcon(context.getApplicationInfo().icon)
 				.setWhen(System.currentTimeMillis())
 				.setContentTitle(extras.getString("title"))
+				.setStyle(new NotificationCompat.BigTextStyle().bigText(message))
 				.setTicker(extras.getString("title"))
 				.setContentIntent(contentIntent)
 				.setAutoCancel(true);
 
-		String message = extras.getString("message");
+	
 		if (message != null) {
 			mBuilder.setContentText(message);
 		} else {
