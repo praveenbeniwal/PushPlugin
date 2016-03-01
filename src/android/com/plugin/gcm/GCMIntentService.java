@@ -104,6 +104,7 @@ public class GCMIntentService extends GCMBaseIntentService {
 				.setSmallIcon(context.getApplicationInfo().icon)
 				.setWhen(System.currentTimeMillis())
 				.setContentTitle(extras.getString("title"))
+				.setStyle(new NotificationCompat.BigTextStyle().bigText(message))
 				.setTicker(extras.getString("title"))
 				.setContentIntent(contentIntent)
 				.setAutoCancel(true);
